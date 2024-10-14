@@ -1,13 +1,36 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
+import {StyleSheet, Text, View, Animated} from 'react-native';
 import {Logo} from '../../assets/icon';
 
 const SplashScreen = () => {
+  const logoScale = useRef(new Animated.Value(0)).current;
+  const textOpacity = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    // Animasi untuk scaling logo
+    Animated.sequence([
+      Animated.timing(logoScale, {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: true,
+      }),
+      // Animasi setelah logo, opacity pada teks
+      Animated.timing(textOpacity, {
+        toValue: 1,
+        duration: 200,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, [logoScale, textOpacity]);
+
   return (
     <View style={styles.container}>
-      <Logo />
-      <Text style={styles.title}>Money Tracker</Text>
-      <Text style={styles.title}>Gacor Kang!!!</Text>
+      <Animated.View style={{transform: [{scale: logoScale}]}}>
+        <Logo />
+      </Animated.View>
+      <Animated.Text style={[styles.title, {opacity: textOpacity}]}>
+        Money Tracker
+      </Animated.Text>
     </View>
   );
 };
@@ -24,5 +47,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontFamily: 'Poppins-Medium',
+    marginTop: 20, // Memberikan jarak antara logo dan teks
   },
 });
