@@ -1,8 +1,7 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 import React from 'react';
 import {Header, TextInput} from '../../components/molecules';
 import {Button, Gap} from '../../components/atoms';
-import {Ellipse} from '../../assets/icon';
 
 const SignUp = () => {
   return (
@@ -13,7 +12,16 @@ const SignUp = () => {
       </View>
       <View style={styles.contentWrapper}>
         <View style={styles.container3}>
-          <Ellipse />
+          <View style={styles.circleBorder}>
+            <View style={styles.placeholderCircle}>
+              <Text style={styles.addPhotoText}>Add{'\n'}Photo</Text>
+            </View>
+            {/* Ganti dengan URI foto profil jika ada */}
+            <Image
+              source={{uri: 'https://example.com/path-to-your-image.jpg'}} // Replace with actual image
+              style={styles.profileImage}
+            />
+          </View>
         </View>
         <Gap height={26} />
         <TextInput label="Full Name" placeholder="Type your full name" />
@@ -39,7 +47,6 @@ const styles = StyleSheet.create({
   },
   container2: {
     flexDirection: 'row',
-    flex: 0,
     backgroundColor: '#FFFFFF',
     paddingHorizontal: 24,
   },
@@ -54,5 +61,36 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     paddingHorizontal: 24,
     paddingTop: 25,
+  },
+  circleBorder: {
+    width: 100,
+    height: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+    borderWidth: 2, // Border width for the dashed lines
+    borderRadius: 50, // To ensure the dashed border is circular
+    borderColor: '#999', // Border color
+    borderStyle: 'dashed', // Dashed border style
+  },
+  placeholderCircle: {
+    width: 90, // Smaller circle within the dashed border
+    height: 90,
+    borderRadius: 45,
+    backgroundColor: '#F0F0F0', // Light gray background
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  profileImage: {
+    width: 90, // Same size as placeholder circle
+    height: 90,
+    borderRadius: 45,
+    position: 'absolute',
+  },
+  addPhotoText: {
+    color: '#999', // Gray color for the text
+    fontSize: 15,
+    textAlign: 'center',
+    lineHeight: 18, // Space between the two lines
   },
 });
