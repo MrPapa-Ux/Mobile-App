@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
     borderStyle: 'dashed', // Dashed border style
   },
   placeholderCircle: {
-    width: 90, // Smaller circle within the dashed border
-    height: 90,
+    width: 80, // Smaller circle within the dashed border
+    height: 80,
     borderRadius: 45,
     backgroundColor: '#F0F0F0', // Light gray background
     justifyContent: 'center',
