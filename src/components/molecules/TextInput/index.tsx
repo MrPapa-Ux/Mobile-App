@@ -20,9 +20,8 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: '#020202',
     borderRadius: 8,
+    borderColor: '#020202',
     padding: 10,
-    color: '#8D92A3',
   },
 });
