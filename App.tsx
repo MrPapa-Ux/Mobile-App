@@ -5,8 +5,11 @@ import SignIn from './src/pages/SignIn';
 import SignUp from './src/pages/SignUp';
 import Home from './src/pages/Home';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import AddTransaction from './src/pages/AddTransaction';
+import FlashMessage from 'react-native-flash-message';
 import CashOnHand from './src/pages/CashOnHand';
 import CashOnBank from './src/pages/CashOnBank';
+import './src/config/Firebase';
 
 const stack = createNativeStackNavigator();
 
@@ -35,6 +38,11 @@ const App = () => {
           options={{headerShown: false}}
         />
         <stack.Screen
+          name="AddTransaction"
+          component={AddTransaction}
+          options={{headerShown: false}}
+        />
+        <stack.Screen
           name="CashOnHand"
           component={CashOnHand}
           options={{headerShown: false}}
@@ -45,6 +53,7 @@ const App = () => {
           options={{headerShown: false}}
         />
       </stack.Navigator>
+      <FlashMessage position="top" />
     </NavigationContainer>
   );
 };

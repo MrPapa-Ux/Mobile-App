@@ -1,42 +1,43 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
-import {NullPhoto} from '../../assets/icon';
+import {StyleSheet, Text, View, Image} from 'react-native';
 import {Button, Gap} from '../../components/atoms';
+import {DummyPhoto} from '../../assets/icon';
 
 const Home = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.headerTitle}>
-        <View style={styles.header}>
-          <Text style={styles.title}>Money Tracker</Text>
-          <Image source={NullPhoto} style={styles.profile} />
+    <View style={styles.pageContainer}>
+      <View style={styles.headerContainer}>
+        <View>
+          <Text style={styles.appTitle}>Money Tracker</Text>
+          <Text style={styles.appSubTitle}>Track Your Money</Text>
         </View>
-        <Text style={styles.subtitle}>Track your money</Text>
+        <Image source={DummyPhoto} />
       </View>
-      <Gap height={20} />
-      <View style={styles.balanceSection}>
-        <Text style={styles.balanceLabel}>Your Balance</Text>
-        <Text style={styles.balanceAmount}>Rp. 10.000.000</Text>
+      <View style={styles.contentWrapper}>
+        <Text style={styles.subTitle}>Your Balance</Text>
+        <Text style={styles.totalBalance}>Rp. 10.000.000</Text>
         <View style={styles.line} />
-        <View style={styles.subTotal}>
-          <Text style={styles.labelOn}>Cash on Hand</Text>
-          <Text style={styles.amountOn}>Rp. 4.000.000</Text>
+        <View style={styles.subTotalWrapper}>
+          <Text style={styles.subTotal}>Cash On Hand</Text>
+          <Text style={styles.subTotal}>Rp. 4.000.000</Text>
         </View>
-        <View style={styles.subTotal}>
-          <Text style={styles.labelOn}>Cash on Bank</Text>
-          <Text style={styles.amountOn}>Rp. 6.000.000</Text>
+        <View style={styles.subTotalWrapper}>
+          <Text style={styles.subTotal}>Cash On Bank</Text>
+          <Text style={styles.subTotal}>Rp. 6.000.000</Text>
         </View>
-      </View>
-      <View style={styles.transactionSection}>
-        <Text style={styles.transactionTitle}>Add Transaction</Text>
+        <Text style={styles.subTitle}>Add Transaction</Text>
         <Button
           text="Cash On Hand"
-          onPress={() => navigation.navigate('CashOnHand')}
+          onPress={() =>
+            navigation.navigate('AddTransaction', {title: 'Cash On Hand'})
+          }
         />
-        <Gap height={26} />
+        <Gap height={10} />
         <Button
           text="Cash On Bank"
-          onPress={() => navigation.navigate('CashOnBank')}
+          onPress={() =>
+            navigation.navigate('AddTransaction', {title: 'Cash On Bank'})
+          }
         />
       </View>
     </View>
@@ -46,88 +47,57 @@ const Home = ({navigation}) => {
 export default Home;
 
 const styles = StyleSheet.create({
-  container: {
+  pageContainer: {
     flex: 1,
-    backgroundColor: '#FAFAFC',
   },
-  headerTitle: {
-    backgroundColor: '#ffffff',
-    paddingBottom: 30,
+  contentWrapper: {
+    paddingHorizontal: 24,
+    backgroundColor: '#FFFFFF',
+    marginTop: 20,
+    flex: 1,
   },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-  profile: {
-    width: 50,
-    height: 50,
-    top: 30,
-  },
-  title: {
-    fontSize: 22,
-    color: '#020202',
-    marginLeft: -30,
-    marginTop: 30,
+  subTitle: {
     fontFamily: 'Poppins-Medium',
-  },
-  subtitle: {
-    color: '#8D92A3',
-    fontSize: 14,
-    marginLeft: 28,
-    fontFamily: 'Poppins-Regular',
-  },
-  profileImage: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-  },
-  balanceSection: {
-    backgroundColor: '#ffffff',
-    padding: 30,
-  },
-  subTotal: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  balanceLabel: {
-    fontSize: 16,
-    color: '#020202',
-    fontFamily: 'Poppins-Medium',
-  },
-  balanceAmount: {
-    fontSize: 32,
-    fontFamily: 'Poppins-Bold',
-    marginVertical: 3,
-    marginHorizontal: 50,
     color: '#000000',
+    fontSize: 16,
+    marginVertical: 12,
+  },
+  totalBalance: {
+    fontFamily: 'Poppins-SemiBold',
+    color: '#000000',
+    fontSize: 24,
+    textAlign: 'center',
   },
   line: {
-    width: 350,
-    height: 1,
-    backgroundColor: '#000000',
-    marginVertical: 8,
+    borderBottomColor: '#000000',
+    borderBottomWidth: 1,
+    marginVertical: 18,
   },
-  labelOn: {
-    fontSize: 16,
+  subTotalWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  subTotal: {
+    fontFamily: 'Poppins-Regular',
+    fontSize: 14,
     color: '#000000',
+  },
+  headerContainer: {
+    backgroundColor: '#FFFFFF',
+    paddingHorizontal: 24,
+    paddingVertical: 37,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  appTitle: {
     fontFamily: 'Poppins-Medium',
-  },
-  amountOn: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#000000',
-    fontFamily: 'Poppins-Medium',
-    paddingLeft: 20,
-  },
-  transactionSection: {
-    marginVertical: 20,
-    padding: 30,
-    backgroundColor: '#ffffff',
-  },
-  transactionTitle: {
-    fontSize: 18,
+    fontSize: 22,
     color: '#020202',
-    fontFamily: 'Poppins-Medium',
+  },
+  appSubTitle: {
+    fontFamily: 'Poppins-Light',
+    fontSize: 14,
+    color: '#8D92A3',
   },
 });
