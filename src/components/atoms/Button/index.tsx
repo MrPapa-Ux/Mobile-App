@@ -1,6 +1,6 @@
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {Back} from '../../../assets/icon';
+import {ArrowBack} from '../../../assets/icon';
 
 const Button = ({
   color = '#02CF8E',
@@ -16,7 +16,7 @@ const Button = ({
         activeOpacity={0.5}
         style={styles.backButton}
         onPress={onPress}>
-        {icon === 'arrow-back' && <Back />}
+        {icon === 'arrow-back' && <ArrowBack />}
       </TouchableOpacity>
     );
   }
@@ -48,6 +48,5 @@ const styles = StyleSheet.create({
   backButton: {
     width: 50,
     height: 50,
-    paddingTop: 5,
   },
 });

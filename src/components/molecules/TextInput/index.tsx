@@ -1,11 +1,16 @@
 import {StyleSheet, Text, View, TextInput as Input} from 'react-native';
 import React from 'react';
 
-const TextInput = ({label, placeholder}) => {
+const TextInput = ({label, placeholder, onChangeText, ...rest}) => {
   return (
     <View>
       <Text style={styles.label}>{label}</Text>
-      <Input style={styles.input} placeholder={placeholder} />
+      <Input
+        style={styles.input}
+        placeholder={placeholder}
+        onChangeText={onChangeText}
+        {...rest}
+      />
     </View>
   );
 };
@@ -20,8 +25,9 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderRadius: 8,
     borderColor: '#020202',
+    borderRadius: 8,
     padding: 10,
+    color: '#8D92A3',
   },
 });
